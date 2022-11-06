@@ -1,29 +1,23 @@
-import logo from './logo.svg';
 import './App.css';
-import React, {useState, useReducer} from 'react';
+import ReactDOM from "react-dom/client";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import React from 'react';
+import Reducer from './reducer';
+import Custom from './custom';
+import Home from './home';
 
-function reducer(state, action){
-  switch (action.type){
-    case 'Increment':
-      return state + 1;
-    case 'Decrement':
-      return state - 1;
-      case 'Reset':
-        return state - state;
-    default: 
-      return state;
-  };
-};
 function App() {
-  const [count, dispatch] = useReducer(reducer, 0);
+ return (<div>
 
-  return ( <div className='App'>
-    <h1> Count is {count}</h1>
-    <button onClick={() => dispatch({type: 'Increment'})}>Increment</button>
-    <button onClick={() => dispatch({type: 'Decrement'})}>Decrement</button>
-    <button onClick={() => dispatch({type: 'Reset'})}> Reset </button> 
-  </div>
-  );
-}
+       <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/reducer" element={<Reducer />} />
+          <Route path="/custom" element={<Custom />} />
+      </Routes>
+    </div>)
+};
+
+// const rootElement = document.getElementById("root");
+// ReactDOM.render(<App />, rootElement);
 
 export default App;
